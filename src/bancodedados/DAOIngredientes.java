@@ -37,12 +37,13 @@ public class DAOIngredientes {
                         pst.setString(1, ingrediente.getNome());
 			pst.setInt(2, ingrediente.getCalorias());
 			pst.setInt(3, ingrediente.getQuantidadeEstoque());
+                        pst.execute();
                         for( String restricoes : ingrediente.getRestricoes()){
                             pst2.setString(1, ingrediente.getNome());
                             pst2.setString(2, restricoes);
+                            pst2.execute();
                         }
                         
-			pst.execute();
 		} catch (SQLException e) {
 			System.out.println("Erro: " + e.getMessage());
 		} finally {

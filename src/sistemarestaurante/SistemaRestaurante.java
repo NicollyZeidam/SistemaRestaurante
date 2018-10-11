@@ -6,6 +6,7 @@
 package sistemarestaurante;
 
 import bancodedados.DAOIngredientes;
+import bancodedados.DAOResticoes;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class SistemaRestaurante {
      * @throws java.lang.Exception
      */
     public static void main(String[] args) throws Exception {
-       Ingredientes i1 = new Ingredientes("Milho");
+       Ingredientes i1 = new Ingredientes("BOI");
        i1.setCalorias(60);
        Ingredientes i2 = new Ingredientes("Pão");
        i2.setCalorias(10);
@@ -29,10 +30,15 @@ public class SistemaRestaurante {
        List ingredientes = new ArrayList();
        ingredientes.add(i2);
        ingredientes.add(i1);
+       //DAOResticoes daoRestricoes = new DAOResticoes();
+       
+       
+       //daoRestricoes.criarResticao("HIPER TENSÃO");
        
        
        List restricoes = new ArrayList();
        restricoes.add("Diabetis");
+       restricoes.add("HIPER TENSÃO");
        i1.setRestricoes(restricoes);
        Usuario user = new Usuario("Jhonatan",new ArrayList());
                      
