@@ -5,11 +5,11 @@ CREATE TABLE restricoes(nomeRestricoes varchar(20) primary key);
 
 CREATE TABLE ingrediente(nome varchar(20) primary key, calorias int, quantidadeEstoque int);
 
-CREATE TABLE ingredienteRestricoes(nomeIngrediente varchar(20) primary key,nomeRestricoes varchar(20),
+CREATE TABLE ingredienteRestricoes(nomeIngrediente varchar(20),nomeRestricoes varchar(20),
 FOREIGN KEY ( nomeIngrediente )
 REFERENCES ingrediente(nome)
 ON UPDATE NO ACTION ON DELETE RESTRICT,								   
 FOREIGN KEY ( nomeRestricoes )
 REFERENCES restricoes(nomeRestricoes)
-ON UPDATE NO ACTION ON DELETE RESTRICT);
+ON UPDATE NO ACTION ON DELETE RESTRICT),PRIMARY KEY(nomeIngrediente, nomeRestricoes);
 

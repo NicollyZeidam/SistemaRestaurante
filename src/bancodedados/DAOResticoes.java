@@ -52,9 +52,8 @@ public class DAOResticoes {
 		try {
 			// para iterar sobre os resultados de uma consulta, deve-se utilizar o método next()
 			while (resultado.next()) {
-                                String nomeIngrediente = resultado.getString("nome");
-				int calorias = resultado.getInt("calorias");
-                                ListRestricoes.add(nomeIngrediente);
+                                String nomeResticoes = resultado.getString("nomeRestricoes");
+                                ListRestricoes.add(nomeResticoes);
 			}
 		} catch (SQLException e) {
 			System.out.println("Erro: " + e.getMessage());

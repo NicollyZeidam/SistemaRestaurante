@@ -44,5 +44,10 @@ public class Usuario {
     public void setRestricoes(List<String> restricoes) {
         this.restricoes = restricoes;
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "nome=" + nome + ", restricoes=" + restricoes + '}';
+    }
     
 }

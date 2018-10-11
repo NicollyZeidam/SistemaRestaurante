@@ -94,5 +94,10 @@ public class Bebida implements Produto {
             });
         });
     }
+
+    @Override
+    public String toString() {
+        return "Bebida{" + "nome=" + nome + ", valor=" + valor + ", calorias=" + calorias + ", quantidadeEstoque=" + quantidadeEstoque + ", restricoes=" + restricoes + '}';
+    }
     
 }

@@ -91,6 +91,11 @@ public class Prato implements Produto {
             });
         });
     }
+
+    @Override
+    public String toString() {
+        return "Prato{" + "nome=" + nome + ", ingredientes=" + ingredientes + ", valor=" + valor + '}';
+    }
     
     
 }

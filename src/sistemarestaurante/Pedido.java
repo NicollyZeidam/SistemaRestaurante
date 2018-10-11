@@ -89,4 +89,9 @@ public class Pedido {
     public void addProduto(Produto produto){
         this.produtoPedido.add(produto);
     }
+
+    @Override
+    public String toString() {
+        return "Pedido{" + "user=" + user + ", produtoPedido=" + produtoPedido + '}';
+    }
 }

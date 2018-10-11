@@ -64,6 +64,11 @@ public class Ingredientes {
     public void setRestricoes(List<String> restricoes) {
         this.restricoes = restricoes;
     }
+
+    @Override
+    public String toString() {
+        return "Ingredientes{" + "nome=" + nome + ", calorias=" + calorias + ", quantidadeEstoque=" + quantidadeEstoque + ", restricoes=" + restricoes + '}';
+    }
     
     
 }

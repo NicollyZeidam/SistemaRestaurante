@@ -5,6 +5,7 @@
  */
 package sistemarestaurante;
 
+import bancodedados.DAOBebidas;
 import bancodedados.DAOIngredientes;
 import bancodedados.DAOResticoes;
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class SistemaRestaurante {
        List ingredientes = new ArrayList();
        ingredientes.add(i2);
        ingredientes.add(i1);
-       //DAOResticoes daoRestricoes = new DAOResticoes();
+       DAOResticoes daoRestricoes = new DAOResticoes();
        
        
        //daoRestricoes.criarResticao("HIPER TENSÃO");
@@ -41,13 +42,17 @@ public class SistemaRestaurante {
        restricoes.add("HIPER TENSÃO");
        i1.setRestricoes(restricoes);
        Usuario user = new Usuario("Jhonatan",new ArrayList());
-                     
-       DAOIngredientes daoingredientes = new DAOIngredientes();
-       daoingredientes.criarIngredientes(i1);
+       DAOBebidas b = new DAOBebidas();
+       Bebida b1 = new Bebida("SUCO",7,100,5,restricoes);
+       b.criarBebida(b1);
+       
+       //DAOIngredientes daoingredientes = new DAOIngredientes();
+       //System.out.println(daoingredientes.buscarIngrediente("Pão"));
+       //daoingredientes.criarIngredientes(i1);
+       //daoingredientes.retirarEstoque("Pão", 1);
 
        
        Prato p1 = new Prato("Pão de milho",ingredientes,500);
-       Bebida b1 = new Bebida("Coca-Cola",7,100,5,ingredientes);
        Pedido pedido1 = new Pedido(user);
        pedido1.addProduto(p1);
        pedido1.addProduto(b1);
@@ -56,11 +61,11 @@ public class SistemaRestaurante {
        }catch(RuntimeException ex){
            System.out.print("Ele é diabetico");
        }
-       System.out.println("CALORIA:"+pedido1.calcularCalorias());
-       System.out.println("VALOR:"+pedido1.getValorPedido());
+       //System.out.println("CALORIA:"+pedido1.calcularCalorias());
+       //.out.println("VALOR:"+pedido1.getValorPedido());
        
        ///p1.removerEstoque(1);
-       //System.out.println(i2.getQuantidadeEstoque());
+       //System.out.println(daoRestricoes);
        //System.out.print(i1.getQuantidadeEstoque());
     }
     

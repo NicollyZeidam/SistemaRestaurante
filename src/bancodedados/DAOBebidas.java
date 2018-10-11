@@ -3,43 +3,45 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package bancodedados;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import sistemarestaurante.Bebida;
 import sistemarestaurante.Ingredientes;
 
 /**
  *
- * @author jhonatanPovoas
+ * @author User
  */
-public class DAOIngredientes {
+public class DAOBebidas {
      private ConexaoBD conexao;
     
-    public DAOIngredientes() {
+    public DAOBebidas() {
 		// cria o objeto para conexão com banco, porém não o inicializa
 		// a conexão deve ser aberta e, consequentemente, fechada durante o envio de comandos
 		// ao banco
 		this.conexao = new ConexaoBD();
 	}
 	
-    public void criarIngredientes(Ingredientes ingrediente) {
+    public void criarBebida(Bebida bebida) {
 		
 		conexao.conectar();
 
 		try {
-			PreparedStatement pst = conexao.getConexao().prepareStatement("insert into ingrediente(nome,calorias,quantidadeEstoque) values(?,?,?)");
-			PreparedStatement pst2 = conexao.getConexao().prepareStatement("insert into ingredienteRestricoes(nomeIngrediente,nomeRestricoes) values(?,?)");
+			PreparedStatement pst = conexao.getConexao().prepareStatement("insert into Bebida(nome,valor,calorias,quantidadeEstoque) values(?,?,?,?)");
+			PreparedStatement pst2 = conexao.getConexao().prepareStatement("insert into BebidasRestricoes(nomeBebida,nomeRestricoes) values(?,?)");
                         
-                        pst.setString(1, ingrediente.getNome());
-			pst.setInt(2, ingrediente.getCalorias());
-			pst.setInt(3, ingrediente.getQuantidadeEstoque());
+                        pst.setString(1, bebida.getNome());
+                        pst.setInt(2, bebida.getValor());
+			pst.setInt(3, bebida.getCalorias());
+			pst.setInt(4, bebida.getQuantidadeEstoque());
                         pst.execute();
-                        for( String restricoes : ingrediente.getRestricoes()){
-                            pst2.setString(1, ingrediente.getNome());
+                        for( String restricoes : bebida.getRestricoes()){
+                            pst2.setString(1, bebida.getNome());
                             pst2.setString(2, restricoes);
                             pst2.execute();
                         }
@@ -49,24 +51,25 @@ public class DAOIngredientes {
 		} finally {
 			conexao.desconectar();
 		}}
-    public ArrayList<Ingredientes> verTodos() {
-		ArrayList<Ingredientes> IngredientesList = new ArrayList<>();
+    public ArrayList<Bebida> verTodos() {
+		ArrayList<Bebida> BebidaList = new ArrayList<>();
 		// abrindo a conexão com o BD   
 		conexao.conectar();
-		ResultSet resultado = conexao.executarSQL("select * from ingrediente");
+		ResultSet resultado = conexao.executarSQL("select * from Bebida");
 		try {
 			// para iterar sobre os resultados de uma consulta, deve-se utilizar o método next()
 			while (resultado.next()) {
-                                String nomeIngrediente = resultado.getString("nome");
+                                String nomeBebida = resultado.getString("nome");
+                                int valor = resultado.getInt("valor");
 				int calorias = resultado.getInt("calorias");
                                 int quantidadeEstoque = resultado.getInt("quantidadeEstoque");
-                                ResultSet resultado2 = conexao.executarSQL("select * from ingredienteRestricoes where nomeIngrediente = \'" + nomeIngrediente + "\'");
+                                ResultSet resultado2 = conexao.executarSQL("select * from BebidasRestricoes where nomeBebida = \'" + nomeBebida + "\'");
                                 List restricoes = new ArrayList();
                                 while(resultado2.next()){
                                     String restricao = resultado2.getString("nomeRestricoes");
                                     restricoes.add(restricao);
                                 }
-                                IngredientesList.add(new Ingredientes(nomeIngrediente,calorias,quantidadeEstoque,restricoes));
+                                BebidaList.add(new Bebida(nomeBebida, valor,calorias,quantidadeEstoque,restricoes));
 			}
 		} catch (SQLException e) {
 			System.out.println("Erro: " + e.getMessage());
@@ -74,7 +77,7 @@ public class DAOIngredientes {
 			// o banco deve ser desconectado, mesmo quando a exceção é lançada
 			conexao.desconectar();
 		}
-		return IngredientesList;
+		return BebidaList;
     
         }
     public Ingredientes buscarIngrediente(String nomeIngrediente) {
