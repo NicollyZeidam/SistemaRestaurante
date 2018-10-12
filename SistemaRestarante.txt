@@ -11,5 +11,14 @@ REFERENCES ingrediente(nome)
 ON UPDATE NO ACTION ON DELETE RESTRICT,								   
 FOREIGN KEY ( nomeRestricoes )
 REFERENCES restricoes(nomeRestricoes)
-ON UPDATE NO ACTION ON DELETE RESTRICT),PRIMARY KEY(nomeIngrediente, nomeRestricoes);
+ON UPDATE NO ACTION ON DELETE RESTRICT ,PRIMARY KEY(nomeIngrediente, nomeRestricoes));
 
+CREATE TABLE Bebida(nome VARCHAR(20) PRIMARY KEY,  valor int,  calorias int,  quantidadeEstoque int);
+
+CREATE TABLE BebidasRestricoes(nomeBebida varchar(20),nomeRestricoes varchar(20),
+FOREIGN KEY ( nomeBebida )
+REFERENCES Bebida(nome)
+ON UPDATE NO ACTION ON DELETE RESTRICT,								   
+FOREIGN KEY ( nomeRestricoes )
+REFERENCES restricoes(nomeRestricoes)
+ON UPDATE NO ACTION ON DELETE RESTRICT, PRIMARY KEY(nomeBebida, nomeRestricoes));
