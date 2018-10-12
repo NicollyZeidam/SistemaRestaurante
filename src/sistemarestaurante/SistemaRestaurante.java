@@ -44,8 +44,9 @@ public class SistemaRestaurante {
        Usuario user = new Usuario("Jhonatan",new ArrayList());
        DAOBebidas b = new DAOBebidas();
        Bebida b1 = new Bebida("SUCO",7,100,5,restricoes);
-       b.criarBebida(b1);
-       
+       System.out.println(b.buscarBebida("SUCO"));
+       b.retirarEstoque("SUCO", 1);
+       System.out.print(b.buscarBebida("SUCO"));
        //DAOIngredientes daoingredientes = new DAOIngredientes();
        //System.out.println(daoingredientes.buscarIngrediente("Pão"));
        //daoingredientes.criarIngredientes(i1);

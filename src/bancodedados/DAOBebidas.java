@@ -80,15 +80,16 @@ public class DAOBebidas {
 		return BebidaList;
     
         }
-    public Ingredientes buscarIngrediente(String nomeIngrediente) {
+    public Bebida buscarBebida(String nomeBebida) {
 		conexao.conectar();
 		ResultSet resultado, resultado2;
-        resultado = conexao.executarSQL("select * from ingrediente where nome = \'" + nomeIngrediente + "\'");
-        resultado2 = conexao.executarSQL("select nomeRestricoes from ingredienteRestricoes where nomeIngrediente = \'" + nomeIngrediente + "\'");
-		Ingredientes ing = null;
+        resultado = conexao.executarSQL("select * from Bebida where nome = \'" + nomeBebida + "\'");
+        resultado2 = conexao.executarSQL("select nomeRestricoes from BebidasRestricoes where nomeBebida = \'" + nomeBebida + "\'");
+		Bebida b = null;
 		try {
 			resultado.next();
                                 String nome = resultado.getString("nome");
+                                int valor = resultado.getInt("valor");
 				int calorias = resultado.getInt("calorias");
                                 int quantidadeEstoque = resultado.getInt("quantidadeEstoque");
                                 List restricoes = new ArrayList();
@@ -96,21 +97,21 @@ public class DAOBebidas {
                                     String restricao = resultado2.getString("nomeRestricoes");
                                     restricoes.add(restricao);
                                 }
-				ing = new Ingredientes(nomeIngrediente,calorias,quantidadeEstoque,restricoes);
+				b = new Bebida(nome,valor,calorias,quantidadeEstoque,restricoes);
 			
 		} catch (SQLException e) {
 			System.out.println("Erro: " + e.getMessage());
 		} finally {
 			conexao.desconectar();
 		}
-		return ing;
+		return b;
 	}
     public void retirarEstoque(String nome, int quantidade) {
 		// abrindo a conexão com o BD
 		conexao.conectar();
 		
 		try {
-			PreparedStatement stm = conexao.getConexao().prepareStatement("UPDATE ingrediente SET quantidadeEstoque = quantidadeEstoque-\'" + quantidade + "\' WHERE nome = \'" + nome + "\'");
+			PreparedStatement stm = conexao.getConexao().prepareStatement("UPDATE bebida SET quantidadeEstoque = quantidadeEstoque-\'" + quantidade + "\' WHERE nome = \'" + nome + "\'");
 			stm.execute();
 		} catch (SQLException e) {
 			System.out.println("Erro: " + e.getMessage());
