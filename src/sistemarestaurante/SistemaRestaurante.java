@@ -7,6 +7,7 @@ package sistemarestaurante;
 
 import bancodedados.DAOBebidas;
 import bancodedados.DAOIngredientes;
+import bancodedados.DAOPrato;
 import bancodedados.DAOResticoes;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,12 +42,12 @@ public class SistemaRestaurante {
        restricoes.add("Diabetis");
        restricoes.add("HIPER TENSÃO");
        i1.setRestricoes(restricoes);
-       Usuario user = new Usuario("Jhonatan",new ArrayList());
-       DAOBebidas b = new DAOBebidas();
-       Bebida b1 = new Bebida("SUCO",7,100,5,restricoes);
-       System.out.println(b.buscarBebida("SUCO"));
-       b.retirarEstoque("SUCO", 1);
-       
+       //Usuario user = new Usuario("Jhonatan",new ArrayList());
+       //DAOBebidas b = new DAOBebidas();
+       //Bebida b1 = new Bebida("SUCO",7,100,5,restricoes);
+       //System.out.println(b.buscarBebida("SUCO"));
+       //b.retirarEstoque("SUCO", 1);
+       //System.out.println(b.buscarBebida("SUCO"));
        /* 
         Esse será o método que eu utlizarei para valificar o tipo do objeto produto para adicionar ou na tabela pedidoBebida, ou na tabela pedidoPrato
        String className = b1.getClass().getSimpleName();
@@ -60,16 +61,20 @@ public class SistemaRestaurante {
        //daoingredientes.criarIngredientes(i1);
        //daoingredientes.retirarEstoque("Pão", 1);
 
+       DAOPrato daoPrato = new DAOPrato();
+       //Prato p1 = new Prato("Pão de milho",ingredientes,500);
+       daoPrato.criarPrato(new Prato("Peixe Assado",ingredientes,80));
+       System.out.println(daoPrato.verTodos());
        
-       Prato p1 = new Prato("Pão de milho",ingredientes,500);
-       Pedido pedido1 = new Pedido(user);
-       pedido1.addProduto(p1);
-       pedido1.addProduto(b1);
-       try{
-           pedido1.verificarRestricoes();
-       }catch(RuntimeException ex){
-           System.out.print("Ele é diabetico");
-       }
+       
+       //Pedido pedido1 = new Pedido(user);
+       //pedido1.addProduto(p1);
+       //pedido1.addProduto(b1);
+       //try{
+           //pedido1.verificarRestricoes();
+       //}catch(RuntimeException ex){
+          // System.out.print("Ele é diabetico");
+       //}
        //System.out.println("CALORIA:"+pedido1.calcularCalorias());
        //.out.println("VALOR:"+pedido1.getValorPedido());
        
