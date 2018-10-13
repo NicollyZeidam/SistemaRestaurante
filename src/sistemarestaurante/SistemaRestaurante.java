@@ -45,7 +45,8 @@ public class SistemaRestaurante {
        i1.setRestricoes(restricoes);
        Usuario user = new Usuario("Jhonatan","WHYJHO","1234","888",restricoes);
        DAOUsuario u = new DAOUsuario();
-       u.criarUsuario(user);
+       //u.criarUsuario(user);
+       System.out.print(u.buscarUsuario("Jhonatan"));
        //DAOBebidas b = new DAOBebidas();
        //Bebida b1 = new Bebida("SUCO",7,100,5,restricoes);
        //System.out.println(b.buscarBebida("SUCO"));
