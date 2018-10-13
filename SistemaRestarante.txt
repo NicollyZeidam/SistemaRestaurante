@@ -32,3 +32,13 @@ ON UPDATE NO ACTION ON DELETE RESTRICT,
 FOREIGN KEY ( nomeIngrediente )
 REFERENCES ingrediente(nome)
 ON UPDATE NO ACTION ON DELETE RESTRICT, PRIMARY KEY(nomePrato, nomeIngrediente));
+
+CREATE TABLE usuario(nome VARCHAR(20) PRIMARY KEY,login VARCHAR(20),senha VARCHAR(20),numeroDaConta VARCHAR(20));
+
+CREATE TABLE usuarioRestricao(nomeUsuario varchar(20),nomeRestricoes varchar(20),
+FOREIGN KEY ( nomeUsuario )
+REFERENCES usuario(nome)
+ON UPDATE NO ACTION ON DELETE RESTRICT,								   
+FOREIGN KEY ( nomeRestricoes )
+REFERENCES restricoes(nomeRestricoes)
+ON UPDATE NO ACTION ON DELETE RESTRICT, PRIMARY KEY(nomeUsuario, nomeRestricoes));

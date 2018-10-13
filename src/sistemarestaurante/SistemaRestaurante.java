@@ -9,6 +9,7 @@ import bancodedados.DAOBebidas;
 import bancodedados.DAOIngredientes;
 import bancodedados.DAOPrato;
 import bancodedados.DAOResticoes;
+import bancodedados.DAOUsuario;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,9 +30,9 @@ public class SistemaRestaurante {
        i2.setCalorias(10);
        i2.setQuantidadeEstoque(2);
        i1.setQuantidadeEstoque(2);
-       List ingredientes = new ArrayList();
-       ingredientes.add(i2);
-       ingredientes.add(i1);
+       //List ingredientes = new ArrayList();
+       //ingredientes.add(i2);
+       //ingredientes.add(i1);
        //DAOResticoes daoRestricoes = new DAOResticoes();
        
        
@@ -42,7 +43,9 @@ public class SistemaRestaurante {
        restricoes.add("Diabetis");
        restricoes.add("HIPER TENSÃO");
        i1.setRestricoes(restricoes);
-       //Usuario user = new Usuario("Jhonatan",new ArrayList());
+       Usuario user = new Usuario("Jhonatan","WHYJHO","1234","888",restricoes);
+       DAOUsuario u = new DAOUsuario();
+       u.criarUsuario(user);
        //DAOBebidas b = new DAOBebidas();
        //Bebida b1 = new Bebida("SUCO",7,100,5,restricoes);
        //System.out.println(b.buscarBebida("SUCO"));
@@ -61,10 +64,10 @@ public class SistemaRestaurante {
        //daoingredientes.criarIngredientes(i1);
        //daoingredientes.retirarEstoque("Pão", 1);
 
-       DAOPrato daoPrato = new DAOPrato();
+       //DAOPrato daoPrato = new DAOPrato();
        //Prato p1 = new Prato("Pão de milho",ingredientes,500);
-       daoPrato.criarPrato(new Prato("Peixe Assado",ingredientes,80));
-       System.out.println(daoPrato.verTodos());
+       //daoPrato.criarPrato(new Prato("Peixe Assado",ingredientes,80));
+       //System.out.println(daoPrato.verTodos());
        
        
        //Pedido pedido1 = new Pedido(user);

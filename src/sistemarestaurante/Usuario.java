@@ -14,19 +14,52 @@ import java.util.List;
  */
 public class Usuario {
     private String nome;
+    private String login;
+    private String senha;
+    private String numeroDaConta;
     private List<String> restricoes;
 
-    public Usuario(String nome, List<String> restricoes) {
+    public Usuario(String nome, String login, String senha, String numeroDaConta, List<String> restricoes) {
         this.nome = nome;
+        this.login = login;
+        this.senha = senha;
+        this.numeroDaConta = numeroDaConta;
         this.restricoes = restricoes;
     }
+
+    
 
     public Usuario() {
     }
 
-    public Usuario(String nome) {
-        this.nome = nome;
+    public Usuario(String login, String senha) {
+        this.login = login;
+        this.senha = senha;
         this.restricoes = new ArrayList();
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getNumeroDaConta() {
+        return numeroDaConta;
+    }
+
+    public void setNumeroDaConta(String numeroDaConta) {
+        this.numeroDaConta = numeroDaConta;
     }
 
     public String getNome() {
