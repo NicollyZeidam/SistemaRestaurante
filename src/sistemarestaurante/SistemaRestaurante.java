@@ -31,7 +31,7 @@ public class SistemaRestaurante {
        List ingredientes = new ArrayList();
        ingredientes.add(i2);
        ingredientes.add(i1);
-       DAOResticoes daoRestricoes = new DAOResticoes();
+       //DAOResticoes daoRestricoes = new DAOResticoes();
        
        
        //daoRestricoes.criarResticao("HIPER TENSÃO");
@@ -46,7 +46,15 @@ public class SistemaRestaurante {
        Bebida b1 = new Bebida("SUCO",7,100,5,restricoes);
        System.out.println(b.buscarBebida("SUCO"));
        b.retirarEstoque("SUCO", 1);
-       System.out.print(b.buscarBebida("SUCO"));
+       
+       /* 
+        Esse será o método que eu utlizarei para valificar o tipo do objeto produto para adicionar ou na tabela pedidoBebida, ou na tabela pedidoPrato
+       String className = b1.getClass().getSimpleName();
+       
+       System.out.print(className);
+       */
+       
+       
        //DAOIngredientes daoingredientes = new DAOIngredientes();
        //System.out.println(daoingredientes.buscarIngrediente("Pão"));
        //daoingredientes.criarIngredientes(i1);
